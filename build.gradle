@@ -15,6 +15,12 @@ configurations {
 	}
 }
 
+compileJava {
+	options.compilerArgs += [
+			'-Amapstruct.defaultComponentModel=spring'
+	]
+}
+
 repositories {
 	mavenCentral()
 }
@@ -22,6 +28,12 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.7.0'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
